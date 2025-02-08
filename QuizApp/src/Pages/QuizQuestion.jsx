@@ -24,7 +24,11 @@ export const QuizQuestion = () => {
         fetchData();
     }, []);
 
-    const handleOptionSelect = (index) => {
+    const handleOptionSelect = (index, optionObj) => {
+        console.log(optionObj);
+        if (optionObj.is_correct == true) {
+            setScore((score) => score + 1)            
+        }
         setSelectedOption(index);
         setUserAnswers({
             ...userAnswers,
@@ -69,7 +73,10 @@ export const QuizQuestion = () => {
                 <div className="mb-8">
                     <div className="flex justify-between text-white mb-2">
                         <span className="font-bold">Question {currentQuestionIndex + 1}/{questions.length}</span>
-                        <span className="font-bold">Time: 0:45</span>
+                    
+                        <div className="w-16 h-16 bg-blue-600/20 rounded-full border-2 border-white/10 backdrop-blur-sm flex items-center justify-center">
+                    <span className="text-white font-bold">{score}</span>
+                </div>
                     </div>
                     <div className="w-full h-4 bg-blue-800/30 rounded-full">
                         <div
@@ -90,7 +97,7 @@ export const QuizQuestion = () => {
                 {currentQuestion.options.map((optionObj, index) => (
                     <button
                         key={index}
-                        onClick={() => handleOptionSelect(index)}
+                        onClick={() => handleOptionSelect(index, optionObj)}
                         className={`
             w-full p-6
             ${selectedOption === index
@@ -109,7 +116,7 @@ export const QuizQuestion = () => {
                         <span className="absolute left-4 opacity-50">
                             {String.fromCharCode(65 + index)}.
                         </span>
-                        <span className="ml-8">{optionObj.description}</span>
+                        <span  className="ml-8">{optionObj.description}</span>
                     </button>
                 ))}
 
@@ -153,9 +160,7 @@ export const QuizQuestion = () => {
                 </div>
 
                 {/* Score indicator */}
-                <div className="absolute top-8 right-8 w-16 h-16 bg-blue-600/20 rounded-full border-2 border-white/10 backdrop-blur-sm flex items-center justify-center">
-                    <span className="text-white font-bold">{Object.keys(userAnswers).length}</span>
-                </div>
+
             </div>
         </div>
     );
