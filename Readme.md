@@ -44,3 +44,4 @@ Demo Images
 
 Demo Video 
 
+[Watch Video](https://github.com/aditorito/QuizWebApp/blob/master/QuizApp/src/assets/Video_Demo.mp4)
