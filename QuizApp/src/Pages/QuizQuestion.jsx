@@ -74,8 +74,8 @@ export const QuizQuestion = () => {
                     <div className="flex justify-between text-white mb-2">
                         <span className="font-bold">Question {currentQuestionIndex + 1}/{questions.length}</span>
                     
-                        <div className="w-16 h-16 bg-blue-600/20 rounded-full border-2 border-white/10 backdrop-blur-sm flex items-center justify-center">
-                    <span className="text-white font-bold">{score}</span>
+                        <div className="w-20 h-23 bg-blue-600/20 rounded-full border-2 border-white/10 backdrop-blur-sm flex items-center justify-center">
+                    <span className="text-white font-bold">Score:- {score}</span>
                 </div>
                     </div>
                     <div className="w-full h-4 bg-blue-800/30 rounded-full">
@@ -103,6 +103,7 @@ export const QuizQuestion = () => {
             ${selectedOption === index
                                 ? 'bg-gradient-to-r from-blue-400 to-blue-600 border-white'
                                 : 'bg-white/10 hover:bg-white/20 border-white/20'}
+                                
             rounded-2xl
             text-white text-xl font-semibold
             transition-all duration-300
